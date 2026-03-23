@@ -1,2 +1,0 @@
-# OMARQST
-omarQST
